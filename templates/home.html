@@ -4,10 +4,10 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+    {% if user.is_authenticated %}
+        <p>Hi <b>{{ user.username }}</b>!</p>
+    {% else %}
+        <p>You are not logged in.</p>
+    {% endif %}
     <p>This is the home page of the project. The project is a demo of GeoDjango. An assignment of Advanced Web Mapping module of Yuhong's 4th year.</p>
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-{% else %}
-  <p>You are not logged in.</p>
-{% endif %}
 {% endblock %}
