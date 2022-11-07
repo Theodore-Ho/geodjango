@@ -1,3 +1,4 @@
+{% load leaflet_tags %}
 <!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+    {% leaflet_css %}
+    {% leaflet_js %}
     <style>
 html, body {
     height: 100%;
@@ -26,12 +29,12 @@ html, body {
 }
 #main {
     overflow:auto;
-    padding-bottom:60px;
+    padding-bottom:40px;
 }
 #content {
     padding-top: 20px;
 }
-footer {
+#footer {
     position: relative;
     margin-top: -48px;
     width: 100%;
@@ -43,7 +46,7 @@ footer {
     text-align: center;
     border-top-style: groove;
 }
-footer a {
+#footer a {
     color:#014073;
 }
     </style>
@@ -51,7 +54,7 @@ footer a {
 <body>
 <div id="wrap">
     <div id="main">
-        <div id="nav">
+        <div id="header">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="{% url 'home' %}">GeoDjango</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +68,7 @@ footer a {
                         </li>
                         {% if user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Map</a>
+                                <a class="nav-link" href="{% url 'map' %}">Map</a>
                             </li>
                         {% endif %}
                     </ul>
@@ -95,7 +98,7 @@ footer a {
                 </div>
             </nav>
         </div>
-        <div class="container">
+        <div class="container" id="container">
             <div id="content">
                 {% block content %}
                 {% endblock %}
@@ -103,10 +106,13 @@ footer a {
         </div>
     </div>
 </div>
-<footer>
-    <span>&copy; MIT license</span> &#124;
-    <a href='https://github.com/Theodore-Ho/geodjango'>GitHub</a> &#124;
-    <a href='mailto:he@yuhong.me'>he@yuhong.me</a>
-</footer>
+<div id="footer">
+    <footer>
+        <span>&copy; MIT license</span> &#124;
+        <a href='https://github.com/Theodore-Ho/geodjango'>GitHub</a> &#124;
+        <a href='mailto:he@yuhong.me'>he@yuhong.me</a>
+    </footer>
+</div>
+{% block extra_footer %}{% endblock %}
 </body>
 </html>
