@@ -161,7 +161,7 @@ else:
 if docker_config.DEPLOY_SECURE:
     DEBUG = False
     TEMPLATES[0]["OPTIONS"]["debug"] = False
-    ALLOWED_HOSTS = ['wmap.yuhong.me', '8.218.90.100', '127.0.0.1']
+    ALLOWED_HOSTS = ['www.yuhong.online', '3.252.163.8', '127.0.0.1']
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
 else:
