@@ -29,6 +29,7 @@ class WorldBorder(models.Model):
 
 
 class Profile(models.Model):
+    # world_profile, stores the user location information
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     modified = models.DateTimeField(auto_now=True, editable=False)

@@ -47,6 +47,7 @@ class RegisterSerializer(serializers.Serializer):
     )
 
     def validate(self, data):
+        # validate password and confirm password are equal
         if data['password'] != data['password_confirmation']:
             raise serializers.ValidationError("Password is not same")
 
@@ -71,6 +72,7 @@ class ChangePasswordSerializer(serializers.Serializer):
     )
 
     def validate(self, data):
+        # validate new password and new confirm password are equal
         if data['new_password'] != data['new_password_confirmation']:
             raise serializers.ValidationError("Password not match!")
 

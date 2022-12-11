@@ -6,11 +6,13 @@ from accounts import rest_views
 from accounts.views import UserViewSet
 from world.views import WorldProfileViewSet, WorldBorderViewSet
 
+# Practice router, not used in the assignment
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'world_border', WorldBorderViewSet)
-router.register(r'world_profile', WorldProfileViewSet)
+router.register(r'users', UserViewSet)  # Check all the user
+router.register(r'world_border', WorldBorderViewSet)  # Check all the country
+router.register(r'world_profile', WorldProfileViewSet)  # Check all the user location record
 
+# API for the assignment
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/', include(router.urls)),
