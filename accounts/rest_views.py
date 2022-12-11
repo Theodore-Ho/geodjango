@@ -33,7 +33,7 @@ class Login(generics.CreateAPIView):
                 try:
                     tokenObj = Token.objects.get(user_id=user.id)
                 except Exception as e:
-                    print("Create token error: " + str(e))
+                    print(str(e))
                     tokenObj = Token.objects.create(user=user)
 
                 # update last_login time
