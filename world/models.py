@@ -1,9 +1,6 @@
 from django.contrib.auth import get_user_model
 
-# Create your models here.
 from django.contrib.gis.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 
 class WorldBorder(models.Model):
@@ -41,15 +38,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.user}"
-
-
-#
-# Signal
-#
-@receiver(post_save, sender=get_user_model())
-def manage_user_profile(sender, instance, created, **kwargs):
-    try:
-        my_profile = instance.profile
-        my_profile.save()
-    except Profile.DoesNotExist:
-        Profile.objects.create(user=instance)
